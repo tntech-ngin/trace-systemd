@@ -16,7 +16,5 @@ COPY --from=build-infoedit /build/usr/local/bin/infoconv /usr/local/bin/
 COPY --from=build-infoedit /build/usr/local/bin/infoedit /usr/local/bin/
 COPY scheduler.py .
 COPY requirements.txt .
-# temp
-COPY nlsr.conf . 
 RUN pip install --no-cache-dir -r requirements.txt
-ENTRYPOINT ["sleep", "infinity"]
+ENTRYPOINT ["python3.10", "scheduler.py"]

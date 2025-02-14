@@ -42,7 +42,7 @@ def run_command(cmd, child=False):
 
 def construct_node_name():
     try:
-        nlsr_info = run_command("infoconv info2json < ./nlsr.conf")
+        nlsr_info = run_command("infoconv info2json < /config/nlsr.conf")
         nlsr_json = json.loads(nlsr_info)
         node_name = nlsr_json["general"]["site"].replace("/", "_").lstrip("_")
     except Exception as e:
@@ -101,7 +101,7 @@ def schedule_tasks():
 
     while True:
         schedule.run_pending()
-        time.sleep(1)
+        time.sleep(10)
 
 
 if __name__ == "__main__":
